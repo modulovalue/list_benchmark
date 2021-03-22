@@ -10,30 +10,30 @@ void runAllTypedData(Float64List Function() factory) {
 class _ExtractOneByOne extends BenchmarkBase {
   final Float64List sourceList;
 
-  const _ExtractOneByOne(this.sourceList) : super('Cloning: extract one by one');
+  const _ExtractOneByOne(this.sourceList) : super('Float64List: extract one by one');
 
   @override
   void run() {
     // ignore: unused_local_variable
-    double start = 0;
-    for (int i = 0; i < sourceList.length; i++) {
-      start += sourceList[i];
+    var sum = 0.0;
+    final length = sourceList.length;
+    for (int i = 0; i < length; i++) {
+      sum += sourceList[i];
     }
-
   }
 }
 
 class _ExtractAllViaForEach extends BenchmarkBase {
   final Float64List sourceList;
 
-  const _ExtractAllViaForEach(this.sourceList) : super('Cloning: extract all via for each');
+  const _ExtractAllViaForEach(this.sourceList) : super('Float64List: extract all via forEach');
 
   @override
   void run() {
     // ignore: unused_local_variable
-    double start = 0;
-    sourceList.forEach((element) {
-      start += element;
+    var sum = 0.0;
+    sourceList.forEach((value) {
+      sum += value;
     });
   }
 }
